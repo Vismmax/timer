@@ -45,6 +45,9 @@ export default function TimerInput({
           className={classes.input}
           id={title}
           label={title}
+          InputProps={{
+            readOnly: true,
+          }}
           InputLabelProps={{
             shrink: true,
           }}

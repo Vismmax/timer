@@ -7,6 +7,7 @@ import PauseIcon from '@material-ui/icons/Pause';
 import RefreshIcon from '@material-ui/icons/Refresh';
 
 import TimerChart from './TimerChart';
+import { Status } from '../redux/timerSlice';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -22,6 +23,7 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 interface Props {
+  status: Status;
   minutes: number;
   seconds: number;
   onPause: () => void;
@@ -29,6 +31,7 @@ interface Props {
 }
 
 export default function TimerProgress({
+  status,
   minutes,
   seconds,
   onPause,
@@ -58,11 +61,10 @@ export default function TimerProgress({
               variant='contained'
               size='large'
               color='primary'
-              startIcon={<PauseIcon />}
-              //   startIcon={<PlayArrowIcon />}
+              startIcon={status === 'start' ? <PauseIcon /> : <PlayArrowIcon />}
               onClick={onPause}
             >
-              Pause
+              {status === 'start' ? 'Pause' : 'Start'}
             </Button>
           </Grid>
           <Grid item container justify='center'>

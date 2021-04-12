@@ -1,10 +1,17 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 
 import TimerInput from './TimerInput';
+import {
+  decrementMinutes,
+  decrementSeconds,
+  incrementMinutes,
+  incrementSeconds,
+} from '../redux/timerSlice';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -30,11 +37,12 @@ interface Props {
 
 export default function TimerStarted({ minutes, seconds, onStart }: Props) {
   const classes = useStyles();
+  const dispatch = useDispatch();
 
-  const handleIncrementMinutes = () => {};
-  const handleDecrementMinutes = () => {};
-  const handleIncrementSeconds = () => {};
-  const handleDecrementSeconds = () => {};
+  const handleIncrementMinutes = () => dispatch(incrementMinutes());
+  const handleDecrementMinutes = () => dispatch(decrementMinutes());
+  const handleIncrementSeconds = () => dispatch(incrementSeconds());
+  const handleDecrementSeconds = () => dispatch(decrementSeconds());
 
   return (
     <div className={classes.root}>

@@ -17,6 +17,9 @@ const useStyles = makeStyles((theme: Theme) =>
       bottom: 0,
       right: 0,
     },
+    chart: {
+      color: theme.palette.divider,
+    },
   }),
 );
 
@@ -35,6 +38,12 @@ export default function TimerChart({ value, max = 60, title }: Props) {
         variant='determinate'
         size={100}
         value={(value * 100) / max}
+      />
+      <CircularProgress
+        className={`${classes.main} ${classes.chart}`}
+        variant='determinate'
+        size={100}
+        value={100}
       />
       <Grid
         className={classes.main}

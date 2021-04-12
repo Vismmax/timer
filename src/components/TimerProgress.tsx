@@ -8,6 +8,8 @@ import RefreshIcon from '@material-ui/icons/Refresh';
 
 import TimerChart from './TimerChart';
 import { Status } from '../redux/timerSlice';
+import { useState } from 'react';
+import { useEffect } from 'react';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -39,6 +41,12 @@ export default function TimerProgress({
 }: Props) {
   const classes = useStyles();
 
+  const [startMinutes, setStartMinutes] = useState(0);
+
+  useEffect(() => {
+    setStartMinutes(minutes);
+  }, []);
+
   return (
     <div className={classes.root}>
       <Grid
@@ -49,7 +57,7 @@ export default function TimerProgress({
       >
         <Grid item container justify='space-around'>
           <Grid item>
-            <TimerChart value={minutes} max={8} title='Minutes' />
+            <TimerChart value={minutes} max={startMinutes} title='Minutes' />
           </Grid>
           <Grid item>
             <TimerChart value={seconds} max={60} title='Seconds' />

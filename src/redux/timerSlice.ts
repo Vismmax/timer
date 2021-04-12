@@ -65,7 +65,7 @@ export const tickTimer = (): AppThunk => (dispatch, getState) => {
     clearInterval(getState().timer.intervalId);
     dispatch(setStatus('done'));
   }
-  if (getState().timer.minutes > 0 && getState().timer.seconds === 1) {
+  if (getState().timer.seconds === 0) {
     dispatch(decrementMinutes());
   }
   dispatch(decrementSeconds());

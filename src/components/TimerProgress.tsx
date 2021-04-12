@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
@@ -8,8 +8,6 @@ import RefreshIcon from '@material-ui/icons/Refresh';
 
 import TimerChart from './TimerChart';
 import { Status } from '../redux/timerSlice';
-import { useState } from 'react';
-import { useEffect } from 'react';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -41,10 +39,10 @@ export default function TimerProgress({
 }: Props) {
   const classes = useStyles();
 
-  const [startMinutes, setStartMinutes] = useState(0);
+  const [startMinutes, setStartMinutes] = useState(1);
 
   useEffect(() => {
-    setStartMinutes(minutes);
+    setStartMinutes(minutes ? minutes : 1);
   }, []);
 
   return (

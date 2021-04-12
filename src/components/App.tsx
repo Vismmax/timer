@@ -2,6 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
+
 import TimerStarted from './TimerStarted';
 import TimerProgress from './TimerProgress';
 import TimerFinished from './TimerFinished';
@@ -13,6 +14,7 @@ import {
   startTimer,
   statusTimer,
 } from '../redux/timerSlice';
+import TimerSound from './TimerSound';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -24,6 +26,7 @@ const useStyles = makeStyles((theme: Theme) =>
       height: '100vh',
     },
     main: {
+      position: 'relative',
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
@@ -66,6 +69,7 @@ function App() {
           />
         )}
         {status === 'done' && <TimerFinished onDismiss={handleReset} />}
+        <TimerSound status={status} seconds={seconds} />
       </Paper>
     </div>
   );

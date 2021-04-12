@@ -1,5 +1,7 @@
 # Timer
 
+[Timer](https://vismmax-timer.herokuapp.com/)
+
 ## Available Scripts
 
 In the project directory, you can run:

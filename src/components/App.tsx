@@ -6,6 +6,8 @@ import Paper from '@material-ui/core/Paper';
 import TimerStarted from './TimerStarted';
 import TimerProgress from './TimerProgress';
 import TimerFinished from './TimerFinished';
+import TimerSound from './TimerSound';
+import TimerNotification from './TimerNotification';
 import {
   minutesTimer,
   pauseTimer,
@@ -14,7 +16,6 @@ import {
   startTimer,
   statusTimer,
 } from '../redux/timerSlice';
-import TimerSound from './TimerSound';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -70,6 +71,7 @@ function App() {
         )}
         {status === 'done' && <TimerFinished onDismiss={handleReset} />}
         <TimerSound status={status} seconds={seconds} />
+        <TimerNotification status={status} />
       </Paper>
     </div>
   );
